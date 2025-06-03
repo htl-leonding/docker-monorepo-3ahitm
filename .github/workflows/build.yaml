@@ -15,9 +15,10 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: 'sub-project/pom.xml' # optional
+          cache-dependency-path: 'webserver/pom.xml' # optional
       - name: Build with Maven
         run: mvn --batch-mode package --file pom.xml
+        working-directory: webserver
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
