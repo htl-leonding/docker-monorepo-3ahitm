@@ -5,7 +5,7 @@ permissions:
     contents: write
     packages: write
 jobs:
-  Explore-GitHub-Actions:
+  build-and-push-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -22,4 +22,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Build docker image
+        run: |
+          docker build --file ./src/main/docker/Dockerfile -t ghcr.io/htl-leonding/webserver:latest .
+          docker push ghcr.io/htl-leonding/webserver:latest
+        working-directory: webserver
       - run: echo "🍏 This job's status is ${{ job.status }}."
