@@ -1,6 +1,6 @@
 services:
   webserver:
-    image: webserver
+    image: ghcr.io/htl-leonding/webserver:latest
     build:
       context: ../webserver
       dockerfile: ./src/main/docker/Dockerfile
