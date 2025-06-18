@@ -5,6 +5,8 @@ services:
       context: ../webserver
       dockerfile: ./src/main/docker/Dockerfile
     restart: always
+    environment:
+      POSTGRES_HOST: postgres
     healthcheck:
       test: curl -fsS http://localhost:8080
     depends_on:
